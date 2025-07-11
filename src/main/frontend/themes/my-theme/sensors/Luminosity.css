@@ -1,0 +1,27 @@
+.flashlight-container {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.flashlight-svg-container {
+  display: flex;
+  justify-content: center;
+}
+
+.flashlight-body {
+  fill: #000000;
+  stroke: #333333;
+  stroke-width: 1;
+}
+
+.flashlight-head {
+  fill: #000000;
+  stroke: #333333;
+  stroke-width: 1;
+}
+
+.flashlight-light-beam {
+  fill: #cc9900; /* Dark yellow */
+}

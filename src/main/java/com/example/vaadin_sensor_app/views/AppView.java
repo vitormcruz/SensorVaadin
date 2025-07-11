@@ -4,6 +4,7 @@ import com.example.vaadin_sensor_app.server.App;
 import com.example.vaadin_sensor_app.server.SensorData;
 import com.example.vaadin_sensor_app.server.SensorPosition;
 import com.example.vaadin_sensor_app.views.sensor.accelerometer.Accelerometer;
+import com.example.vaadin_sensor_app.views.sensor.luminosity.Luminosity;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -15,9 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Route("")
 public class AppView extends VerticalLayout {
 
-    private final App app;
-    private final Accelerometer accelerometer;
     private SensorData sensorData = new SensorData(0, 0, 0, new SensorPosition(0, 0), 0, 0);
+    private final App app;
+
+    private final Accelerometer accelerometer;
+    private final Luminosity luminosity;
 
     @Autowired
     public AppView(App app) {
@@ -37,7 +40,8 @@ public class AppView extends VerticalLayout {
         divSensorRow1.setClassName("sensor-row");
         accelerometer = new Accelerometer(sensorData.getAcceleration(), 10);
         divSensorRow1.add(accelerometer);
-        divSensorRow1.add(new Accelerometer(sensorData.getAcceleration(), 10));
+        luminosity = new Luminosity(sensorData.getLightIntensity(), 1000);
+        divSensorRow1.add(luminosity);
         divSensorRow1.add(new Accelerometer(sensorData.getAcceleration(), 10));
 
 
@@ -65,6 +69,7 @@ public class AppView extends VerticalLayout {
 
     public void setSensorData(SensorData sensorData) {
         accelerometer.changeSensor(sensorData.getAcceleration());
+        luminosity.changeSensor(sensorData.getLightIntensity());
     }
 
 }

@@ -1,4 +1,5 @@
-@import "accelerometer/Accelerometer.css";
+@import "sensors/Accelerometer.css";
+@import "sensors/Luminosity.css";
 
 .App {
     text-align: center;
