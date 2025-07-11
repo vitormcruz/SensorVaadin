@@ -1,0 +1,19 @@
+.accelerometer-container {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.accelerometer-svg-container {
+  display: flex;
+  justify-content: center;
+}
+
+.accelerometer-background {
+  fill: #cccccc;
+}
+
+.accelerometer-fill {
+  fill: #4CAF50;
+}
