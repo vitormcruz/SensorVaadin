@@ -1,5 +1,6 @@
 @import "sensors/Accelerometer.css";
 @import "sensors/Luminosity.css";
+@import "sensors/Humidity.css";
 
 .App {
     text-align: center;

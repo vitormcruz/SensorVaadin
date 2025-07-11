@@ -4,6 +4,7 @@ import com.example.vaadin_sensor_app.server.App;
 import com.example.vaadin_sensor_app.server.SensorData;
 import com.example.vaadin_sensor_app.server.SensorPosition;
 import com.example.vaadin_sensor_app.views.sensor.accelerometer.Accelerometer;
+import com.example.vaadin_sensor_app.views.sensor.humidity.Humidity;
 import com.example.vaadin_sensor_app.views.sensor.luminosity.Luminosity;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Div;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Route("")
 public class AppView extends VerticalLayout {
 
+    private final Humidity humidity;
     private SensorData sensorData = new SensorData(0, 0, 0, new SensorPosition(0, 0), 0, 0);
     private final App app;
 
@@ -31,7 +33,7 @@ public class AppView extends VerticalLayout {
 
         appDiv.setClassName("App");
         appDiv.add(new H1("Vaadin Sensor Application"));
-        appDiv.add(new H3("An application created to compare another one made with React"));
+        appDiv.add(new H3("An application created to compare with another one made with React"));
         Div divSensorGrid = new Div();
         divSensorGrid.setClassName("sensor-grid");
         appDiv.add(divSensorGrid);
@@ -42,7 +44,8 @@ public class AppView extends VerticalLayout {
         divSensorRow1.add(accelerometer);
         luminosity = new Luminosity(sensorData.getLightIntensity(), 1000);
         divSensorRow1.add(luminosity);
-        divSensorRow1.add(new Accelerometer(sensorData.getAcceleration(), 10));
+        humidity = new Humidity(sensorData.getHumidity(), 100);
+        divSensorRow1.add(humidity);
 
 
         Div divSensorRow2 = new Div();
@@ -70,6 +73,7 @@ public class AppView extends VerticalLayout {
     public void setSensorData(SensorData sensorData) {
         accelerometer.changeSensor(sensorData.getAcceleration());
         luminosity.changeSensor(sensorData.getLightIntensity());
+        humidity.changeSensor(sensorData.getHumidity());
     }
 
 }

@@ -1,0 +1,22 @@
+.humidity-drop-container {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.humidity-drop-svg-container {
+  display: flex;
+  justify-content: center;
+}
+
+.humidity-drop-background {
+  fill: #cccccc;
+  stroke: #999999;
+  stroke-width: 1;
+}
+
+.humidity-drop-fill {
+  fill: #66b3ff;
+  stroke: none;
+}
