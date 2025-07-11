@@ -1,0 +1,36 @@
+.thermometer-container {
+  margin: 20px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.thermometer-svg-container {
+  display: flex;
+  justify-content: center;
+}
+
+.thermometer-outline {
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.thermometer-bulb {
+  fill: none;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.thermometer-mercury {
+  fill: red;
+}
+
+.thermometer-marking {
+  stroke: black;
+}
+
+.thermometer-text {
+  font-size: 8px;
+  text-anchor: start;
+}
