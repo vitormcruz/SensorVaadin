@@ -6,6 +6,7 @@ import com.example.vaadin_sensor_app.server.SensorPosition;
 import com.example.vaadin_sensor_app.views.sensor.accelerometer.Accelerometer;
 import com.example.vaadin_sensor_app.views.sensor.humidity.Humidity;
 import com.example.vaadin_sensor_app.views.sensor.luminosity.Luminosity;
+import com.example.vaadin_sensor_app.views.sensor.thermometer.Thermomether;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
@@ -17,12 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Route("")
 public class AppView extends VerticalLayout {
 
-    private final Humidity humidity;
     private SensorData sensorData = new SensorData(0, 0, 0, new SensorPosition(0, 0), 0, 0);
     private final App app;
-
+    private final Humidity humidity;
     private final Accelerometer accelerometer;
     private final Luminosity luminosity;
+    private final Thermomether thermomether;
 
     @Autowired
     public AppView(App app) {
@@ -54,7 +55,8 @@ public class AppView extends VerticalLayout {
 
 
         Div divSensorRow3 = new Div();
-        divSensorRow3.add(new Accelerometer(sensorData.getAcceleration(), 10));
+        thermomether = new Thermomether(sensorData.getTemperature(), 50);
+        divSensorRow3.add(thermomether);
         divSensorRow3.add(new Accelerometer(sensorData.getAcceleration(), 10));
 
         divSensorGrid.add(divSensorRow1, divSensorRow2, divSensorRow3);
@@ -74,6 +76,7 @@ public class AppView extends VerticalLayout {
         accelerometer.changeSensor(sensorData.getAcceleration());
         luminosity.changeSensor(sensorData.getLightIntensity());
         humidity.changeSensor(sensorData.getHumidity());
+        thermomether.changeSensor(sensorData.getTemperature());
     }
 
 }

@@ -3,7 +3,6 @@ package com.example.vaadin_sensor_app.views.sensor.thermometer;
 import com.example.vaadin_sensor_app.views.sensor.Sensor;
 import com.vaadin.flow.component.html.Div;
 
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.stream.Stream;
 
@@ -35,12 +34,11 @@ public class Thermomether extends Sensor<Double, Integer> {
     
                 <rect
                     x="22"
-                    y={%f}
+                    y=%f
                     width="6"
-                    height={150 * percentage / 100}
+                    height=%f
                     class="thermometer-mercury"
                 />
-                
             """;
 
         svgString = svgString +
@@ -49,24 +47,24 @@ public class Thermomether extends Sensor<Double, Integer> {
                           String svgMark = """ 
                              <line
                                   x1 = "30"
-                                  y1 = %f
+                                  y1 = %d
                                   x2 = "35"
-                                  y2 = %f
+                                  y2 = %d
                                   class = "thermometer-marking"></line >
                               <text
                                   x = "38"
-                                  y = %f
+                                  y = %d
                                   class = "thermometer-text" >
-                                  %f°
+                                  %d°
                               </text >
                           """;
 
-                          return String.format(Locale.US, svgMark, 10 + (150 * (100 - mark) / 100), 10 + (150 * (100 - mark) / 100), 10 + (150 * (100 - mark) / 100) + 4, (maxTemp * mark / 100));})
-                       .reduce((o, o2) -> o + o2).orElse("");
+                          return String.format(Locale.US, svgMark, 10 + (150 * (100 - mark) / 100), 10 + (150 * (100 - mark) / 100), 10 + (150 * (100 - mark) / 100) + 4, (maxTemp * mark / 100));
+                      }).reduce((o, o2) -> o + o2).orElse("");
 
-           "</svg>";
+           svgString += "</svg>";
 
 
-        return String.format(Locale.US, svgString, 10 + (150 - 150 * percentage / 100));
+        return String.format(Locale.US, svgString, 10 + (150 - 150 * percentage / 100), 150 * percentage / 100);
     }
 }
