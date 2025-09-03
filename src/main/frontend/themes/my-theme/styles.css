@@ -1,6 +1,7 @@
 @import "sensors/Accelerometer.css";
 @import "sensors/Luminosity.css";
 @import "sensors/Humidity.css";
+@import "sensors/Position.css";
 @import "sensors/Thermometer.css";
 
 .App {

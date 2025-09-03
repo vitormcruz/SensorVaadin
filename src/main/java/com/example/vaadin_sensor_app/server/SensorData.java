@@ -1,15 +1,19 @@
 package com.example.vaadin_sensor_app.server;
 
+import java.awt.*;
+import java.awt.geom.Point2D;
+
 public class SensorData {
 
     double accelaration;
     double humidity;
     double lightIntensity;
-    SensorPosition position;
+    Point2D position;
     double pressure;
     double temperature;
 
-    public SensorData(double accelaration, double humidity, double lightIntensity, SensorPosition position, double pressure, double temperature) {
+    public SensorData(double accelaration, double humidity, double lightIntensity, Point2D position,
+                      double pressure, double temperature) {
         this.accelaration = accelaration;
         this.humidity = humidity;
         this.lightIntensity = lightIntensity;
@@ -30,7 +34,7 @@ public class SensorData {
         return lightIntensity;
     }
 
-    public SensorPosition getPosition() {
+    public Point2D getPosition() {
         return position;
     }
 
@@ -43,11 +47,13 @@ public class SensorData {
     }
 
     public static SensorData generateSensorData() {
+        Point2D position =  new Point();
+        position.setLocation(Math.random() * 100 * Math.signum(Math.random() - 0.5),
+                             Math.random() * 100 * Math.signum(Math.random() - 0.5));
         return new SensorData(Math.random() * 10,
                               Math.random() * 100,
                               Math.random() * 1000,
-                              new SensorPosition(Math.random() * 100 * Math.signum(Math.random() - 0.5),
-                                                 Math.random() * 100 * Math.signum(Math.random() - 0.5)),
+                              position,
                               Math.random() * 4000,
                               Math.random() * 50
                     );

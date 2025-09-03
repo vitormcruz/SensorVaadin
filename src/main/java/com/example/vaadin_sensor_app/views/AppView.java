@@ -2,10 +2,10 @@ package com.example.vaadin_sensor_app.views;
 
 import com.example.vaadin_sensor_app.server.App;
 import com.example.vaadin_sensor_app.server.SensorData;
-import com.example.vaadin_sensor_app.server.SensorPosition;
 import com.example.vaadin_sensor_app.views.sensor.accelerometer.Accelerometer;
 import com.example.vaadin_sensor_app.views.sensor.humidity.Humidity;
 import com.example.vaadin_sensor_app.views.sensor.luminosity.Luminosity;
+import com.example.vaadin_sensor_app.views.sensor.position.Position;
 import com.example.vaadin_sensor_app.views.sensor.thermometer.Thermomether;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Div;
@@ -15,15 +15,18 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.awt.*;
+
 @Route("")
 public class AppView extends VerticalLayout {
 
-    private SensorData sensorData = new SensorData(0, 0, 0, new SensorPosition(0, 0), 0, 0);
+    private SensorData sensorData = new SensorData(0, 0, 0, new Point(0, 0), 0, 0);
     private final App app;
     private final Humidity humidity;
     private final Accelerometer accelerometer;
     private final Luminosity luminosity;
     private final Thermomether thermomether;
+    private final Position position;
 
     @Autowired
     public AppView(App app) {
@@ -51,7 +54,8 @@ public class AppView extends VerticalLayout {
 
         Div divSensorRow2 = new Div();
         divSensorRow2.setClassName("sensor-row");
-        divSensorRow2.add(new Accelerometer(sensorData.getAcceleration(), 10));
+        position = new Position(sensorData.getPosition(), 100);
+        divSensorRow2.add(position);
 
 
         Div divSensorRow3 = new Div();
@@ -77,6 +81,7 @@ public class AppView extends VerticalLayout {
         luminosity.changeSensor(sensorData.getLightIntensity());
         humidity.changeSensor(sensorData.getHumidity());
         thermomether.changeSensor(sensorData.getTemperature());
+        position.changeSensor(sensorData.getPosition());
     }
 
 }

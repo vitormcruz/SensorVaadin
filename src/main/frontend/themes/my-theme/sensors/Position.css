@@ -1,0 +1,49 @@
+.cartesian-plane-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartesian-svg-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid-line {
+  stroke: #e0e0e0;
+  stroke-width: 0.5;
+}
+
+.axis {
+  stroke-width: 2;
+}
+
+.x-axis {
+  stroke: #e74c3c;
+}
+
+.y-axis {
+  stroke: #2ecc71;
+}
+
+.axis-label {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.plot-point {
+  fill: darkblue;
+  stroke: none;
+}
+
+.coordinates-text {
+  fill: #333;
+  font-size: 12px;
+  font-weight: bold;
+}
