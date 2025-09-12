@@ -3,6 +3,7 @@
 @import "sensors/Humidity.css";
 @import "sensors/Position.css";
 @import "sensors/Thermometer.css";
+@import "sensors/Pressure.css";
 
 .App {
     text-align: center;

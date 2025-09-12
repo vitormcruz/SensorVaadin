@@ -6,6 +6,7 @@ import com.example.vaadin_sensor_app.views.sensor.accelerometer.Accelerometer;
 import com.example.vaadin_sensor_app.views.sensor.humidity.Humidity;
 import com.example.vaadin_sensor_app.views.sensor.luminosity.Luminosity;
 import com.example.vaadin_sensor_app.views.sensor.position.Position;
+import com.example.vaadin_sensor_app.views.sensor.pressure.Pressure;
 import com.example.vaadin_sensor_app.views.sensor.thermometer.Thermomether;
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Div;
@@ -27,6 +28,7 @@ public class AppView extends VerticalLayout {
     private final Luminosity luminosity;
     private final Thermomether thermomether;
     private final Position position;
+    private final Pressure pressure;
 
     @Autowired
     public AppView(App app) {
@@ -59,9 +61,12 @@ public class AppView extends VerticalLayout {
 
 
         Div divSensorRow3 = new Div();
+        divSensorRow3.setClassName("sensor-row");
         thermomether = new Thermomether(sensorData.getTemperature(), 50);
         divSensorRow3.add(thermomether);
-        divSensorRow3.add(new Accelerometer(sensorData.getAcceleration(), 10));
+
+        pressure = new Pressure(sensorData.getPressure(), 4000);
+        divSensorRow3.add(pressure);
 
         divSensorGrid.add(divSensorRow1, divSensorRow2, divSensorRow3);
 
@@ -82,6 +87,7 @@ public class AppView extends VerticalLayout {
         humidity.changeSensor(sensorData.getHumidity());
         thermomether.changeSensor(sensorData.getTemperature());
         position.changeSensor(sensorData.getPosition());
+        pressure.changeSensor(sensorData.getPressure());
     }
 
 }
